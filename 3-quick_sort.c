@@ -1,12 +1,12 @@
 #include "sort.h"
 
 /**
- * quick_sort - sorting algorithm
- * @array: unsorted list of integers
- * @size: size of array
+ * quicksort  sort algo
+ * @array unsortd list of integ
+ * @size size of array
  *
- * Description: quicksorting an array of integers
- * Return: void
+ * Description quicksort an rray of integ
+ * Return void
  */
 void quick_sort(int *array, size_t size)
 {
@@ -14,14 +14,14 @@ void quick_sort(int *array, size_t size)
 }
 
 /**
- * sort - sorting algorithm
- * @array: unsorted list of integers
- * @l: low index
- * @h: last index
- * @size: size of array
+ * sort sorting algo
+ * @array unsorted list of integers
+ * @l low index
+ * @h last index
+ * @size size of ar
  *
- * Description: recursion method for divide and conquer array and partition
- * Return: void
+ * Description recrsion metod fordivide and conquer arr and parttion
+ * Return void
  */
 void sort(int *array, int l, int h, size_t size)
 {
@@ -36,13 +36,13 @@ void sort(int *array, int l, int h, size_t size)
 }
 
 /**
- * partition - lomuta partition
- * @array: unsorted list of integers
- * @l: low index
- * @h: last index
- * @size: size of array
+ * partition lomuta partition
+ * @array unsorted lst of integ
+ * @l low idx
+ * @h last idx
+ * @size size of arr
  *
- * Description: swap elements comparing to last elem pivot
+ * Description swap elements compar to last elem pivot
  * Return: i
  */
 unsigned int partition(int *array, int l, int h, size_t size)

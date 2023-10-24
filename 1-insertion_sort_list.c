@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - insert node
+ * insertionsortlist insert node
  * @list: pointer to stuct node
  *
- * Description: sort array with doubly linked list
- * Return: sorted list
+ * Description sort arr with doubly link list
+ * Return sorted list
  */
 void insertion_sort_list(listint_t **list)
 {

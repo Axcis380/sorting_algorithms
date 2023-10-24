@@ -1,12 +1,12 @@
 #include "sort.h"
 
 /**
- * bubble_sort - sorting algorithm
- * @array: pointer to array
- * @size: size of the array
+ * bublesort sorting algorithm
+ * @array point to arr
+ * @size of the arr
  *
- * Description: sort an array of int elements
- * Return: sorted array
+ * Descrition sort an array of int elements
+ * Return sorted array
  */
 void bubble_sort(int *array, size_t size)
 {
