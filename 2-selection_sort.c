@@ -1,12 +1,12 @@
 #include "sort.h"
 
 /**
- * selectionsort  sorting algo
- * @array array of integ
- * @size size of integers
+ * selection_sort - sorting algorithm
+ * @array: array of integers
+ * @size: size of integers
  *
- * Description sorts an array of integers using Selection Sort
- * Return na
+ * Description: sorts an array of integers using Selection Sort
+ * Return: na
  */
 void selection_sort(int *array, size_t size)
 {
