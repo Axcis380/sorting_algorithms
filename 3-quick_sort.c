@@ -5,85 +5,83 @@
  * @array: unsorted list of integers
  * @size: size of array
  *
- * Description: quicksorting an array of integers
+ * Description: Quick sort an array of integers
  * Return: void
  */
 void quick_sort(int *array, size_t size)
 {
-	sort(array, 0, size - 1, size);
+    if (array != NULL && size > 1)
+        sort(array, 0, size - 1, size);
 }
 
 /**
  * sort - sorting algorithm
  * @array: unsorted list of integers
- * @l: low index
- * @h: last index
+ * @low: low index
+ * @high: high index
  * @size: size of array
  *
- * Description: recursion method for divide and conquer array and partition
+ * Description: Recursion method for divide and conquer array and partition
  * Return: void
  */
-void sort(int *array, int l, int h, size_t size)
+void sort(int *array, int low, int high, size_t size)
 {
-	int p;
-
-	if (l < h)
-	{
-		p = partition(array, l, h, size);
-		sort(array, l, p - 1, size);
-		sort(array, p + 1, h, size);
-	}
+    if (low < high)
+    {
+        int pivot = partition(array, low, high, size);
+        sort(array, low, pivot - 1, size);
+        sort(array, pivot + 1, high, size);
+    }
 }
 
 /**
- * partition - lomuta partition
+ * partition - Lomuto partition
  * @array: unsorted list of integers
- * @l: low index
- * @h: last index
+ * @low: low index
+ * @high: high index
  * @size: size of array
  *
- * Description: swap elements comparing to last elem pivot
- * Return: i
+ * Description: Swap elements comparing to the pivot element
+ * Return: index of the pivot
  */
-unsigned int partition(int *array, int l, int h, size_t size)
+int partition(int *array, int low, int high, size_t size)
 {
-	int pivot = array[h];
-	int i = l;
-	int j;
+    int pivot = array[high];
+    int i = low - 1;
 
-	for (j = l; j < h; j++)
-	{
-		if (array[j] < pivot)
-		{
-			if (i != j)
-			{
-				swapper(&array[i], &array[j]);
-				print_array(array, size);
-			}
-			i++;
-		}
-	}
-	if (array[i] != array[h])
-	{
-		swapper(&array[i], &array[h]);
-		print_array(array, size);
-	}
-	return (i);
+    for (int j = low; j <= high - 1; j++)
+    {
+        if (array[j] < pivot)
+        {
+            i++;
+            if (i != j)
+            {
+                swapper(&array[i], &array[j]);
+                print_array(array, size);
+            }
+        }
+    }
+
+    if (i + 1 != high)
+    {
+        swapper(&array[i + 1], &array[high]);
+        print_array(array, size);
+    }
+
+    return i + 1;
 }
 
 /**
- * swapper - swap index
- * @a: pointer to index of an array
- * @b: pointer to index of an array
+ * swapper - swap elements
+ * @a: pointer to an element
+ * @b: pointer to another element
  *
- * Description: swap elements
- * Return: na
+ * Description: Swap elements
+ * Return: void
  */
 void swapper(int *a, int *b)
 {
-	int t;
-
-	t = *a;
-	*a = *b;
-	*b = t;
+    int t = *a;
+    *a = *b;
+    *b = t;
 }
