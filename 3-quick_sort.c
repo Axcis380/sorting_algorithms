@@ -1,51 +1,89 @@
 #include "sort.h"
 
+/**
+ * quick_sort - sorting algorithm
+ * @array: unsorted list of integers
+ * @size: size of array
+ *
+ * Description: quicksorting an array of integers
+ * Return: void
+ */
 void quick_sort(int *array, size_t size)
 {
-	if (array != NULL && size > 1)
-		sort(array, 0, size - 1, size);
+	sort(array, 0, size - 1, size);
 }
 
-void sort(int *array, int low, int high, size_t size)
+/**
+ * sort - sorting algorithm
+ * @array: unsorted list of integers
+ * @l: low index
+ * @h: last index
+ * @size: size of array
+ *
+ * Description: recursion method for divide and conquer array and partition
+ * Return: void
+ */
+void sort(int *array, int l, int h, size_t size)
 {
-	if (low < high)
+	int p;
+
+	if (l < h)
 	{
-		int pivot = partition(array, low, high, size);
-		sort(array, low, pivot - 1, size);
-		sort(array, pivot + 1, high, size);
+		p = partition(array, l, h, size);
+		sort(array, l, p - 1, size);
+		sort(array, p + 1, h, size);
 	}
 }
 
-int partition(int *array, int low, int high, size_t size)
+/**
+ * partition - lomuta partition
+ * @array: unsorted list of integers
+ * @l: low index
+ * @h: last index
+ * @size: size of array
+ *
+ * Description: swap elements comparing to last elem pivot
+ * Return: i
+ */
+unsigned int partition(int *array, int l, int h, size_t size)
 {
-	int pivot = array[high];
-	int i = low - 1;
+	int pivot = array[h];
+	int i = l;
+	int j;
 
-	for (int j = low; j <= high - 1; j++)
+	for (j = l; j < h; j++)
 	{
 		if (array[j] < pivot)
 		{
-			i++;
 			if (i != j)
 			{
 				swapper(&array[i], &array[j]);
 				print_array(array, size);
 			}
+			i++;
 		}
 	}
-
-	if (i + 1 != high)
+	if (array[i] != array[h])
 	{
-		swapper(&array[i + 1], &array[high]);
+		swapper(&array[i], &array[h]);
 		print_array(array, size);
 	}
-
-	return i + 1;
+	return (i);
 }
 
+/**
+ * swapper - swap index
+ * @a: pointer to index of an array
+ * @b: pointer to index of an array
+ *
+ * Description: swap elements
+ * Return: na
+ */
 void swapper(int *a, int *b)
 {
-	int t = *a;
+	int t;
+
+	t = *a;
 	*a = *b;
 	*b = t;
 }
